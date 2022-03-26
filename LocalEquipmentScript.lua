@@ -5,15 +5,11 @@ Do not edit.
 
 --]]
 
-
-
 local EquipRFunction = game:GetService("ReplicatedStorage"):WaitForChild("EquipRFunction")
 local Tool = script.Parent
 local Handle = Tool:WaitForChild("Handle")
 
-if not game.Players.LocalPlayer:HasAppearanceLoaded() then
-	game.Players.LocalPlayer.CharacterAppearanceLoaded:Wait()
-end
+repeat wait() until game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") and game:GetService("Players").LocalPlayer.Character.Parent ~= nil
 
 local Character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 
