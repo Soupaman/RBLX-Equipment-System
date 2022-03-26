@@ -35,7 +35,7 @@ local function EquipFunction(player, info)
 					RemoveFromTable(player)
 				end)
 				AddToTable(player)
-				humanoid.MaxHealth = 100 + (Equips.GetHealth(info))
+				humanoid.MaxHealth = humanoid.MaxHealth + (Equips.GetHealth(info))
 				print(player, "used an equip item: ",info)
 				return true
 			end
