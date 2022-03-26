@@ -1,7 +1,7 @@
 --[[
 
 Made by Supadownload for group 825742
-Do not copy. Do not distrubute.
+Do not edit.
 
 --]]
 
