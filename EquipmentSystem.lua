@@ -31,7 +31,7 @@ local function EquipFunction(player, info)
 			if table.find(playerTable, player) then
 				return false
 			else
-				humanoid.Died:Connect(function()
+				player.CharacterRemoving:Connect(function()
 					RemoveFromTable(player)
 				end)
 				AddToTable(player)
