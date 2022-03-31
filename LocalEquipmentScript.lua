@@ -1,7 +1,7 @@
 --[[
 
 Made by Supadownload for group 825742
-Do not edit.
+Do not edit. Do not copy. Do not distribute.
 
 --]]
 
@@ -18,11 +18,9 @@ local Humanoid = Character:FindFirstChildOfClass("Humanoid")
 local idle = Handle:WaitForChild("HoldAnim")
 local use = Handle:WaitForChild("ShieldEquip")
 
-
 local Animator = Humanoid:WaitForChild("Animator")
 local IdleAnimation = Animator:LoadAnimation(idle)
 local UseAnimation = Animator:LoadAnimation(use)
-
 
 local Equipped = false
 local Activated = false
@@ -37,26 +35,14 @@ function onClick()
 	UseAnimation:Play()
 	wait(UseAnimation.Length)
 	--animation
-	local activationCheck = EquipRFunction:InvokeServer(Tool.Name)
-	if activationCheck == true then
-		local Weld = Instance.new("Weld")
-		local Model = Instance.new("Model")
-		Model.Parent = Character
-		Model.Name = "Shield"
-		Weld.Parent = Handle
-		Weld.Part0 = Handle
-		Weld.Part1 = Character["Left Arm"]
-		Weld.C0 = CFrame.Angles(0,math.rad(-90),0) * CFrame.new(.59,-.15,0)
-		for _,v in pairs(Tool:GetChildren()) do
-			if v:IsA("BasePart") then
-				v.Parent = Model
-			end
-		end
+	local activationCheck = EquipRFunction:InvokeServer(Tool)
+	if activationCheck == 1 then
+		onUnEquip()
 		Tool:Destroy()
 	else
-		Activated = false
-		error("The equip tool ".. Tool.Name.. "has encountered an error. Do you already have a shield equipped?")
+		warn("The equip tool ".. Tool.Name.. " has encountered an error. Do you already have a shield equipped? EQSys Code: ".. activationCheck)
 	end
+	Activated = false
 end
 
 function onEquip()
